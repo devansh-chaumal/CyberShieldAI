@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberShield AI - Scan Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🛡 CyberShield AI</h1>
+
+    {% if result.verdict == "Safe" %}
+        <h2 style="color:#2ecc71;">🟢 SAFE</h2>
+
+    {% elif result.verdict == "Suspicious" %}
+        <h2 style="color:#f1c40f;">🟡 SUSPICIOUS</h2>
+
+    {% else %}
+        <h2 style="color:#e74c3c;">🔴 DANGEROUS</h2>
+    {% endif %}
+
+    <h3>Risk Score: {{ result.score }}/100</h3>
+
+    <p><strong>Scanned URL:</strong></p>
+
+    <p>{{ result.url }}</p>
+
+    <hr>
+
+    <h3>Reasons</h3>
+
+    <ul>
+        {% for reason in result.reasons %}
+            <li>{{ reason }}</li>
+        {% endfor %}
+    </ul>
+
+    <br>
+
+    <a href="/">
+        <button>🔍 Scan Another URL</button>
+    </a>
+
+</div>
+
+</body>
+</html>

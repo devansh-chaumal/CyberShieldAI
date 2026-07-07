@@ -17,13 +17,19 @@
 
     <p>AI Powered Phishing Detection Platform</p>
 
-    <input
-        type="text"
-        placeholder="Enter a suspicious URL">
+    <form action="/scan" method="POST">
 
-    <button>
-        Scan URL
-    </button>
+        <input
+            type="text"
+            name="url"
+            placeholder="Enter a suspicious URL"
+            required>
+
+        <button type="submit">
+            Scan URL
+        </button>
+
+    </form>
 
 </div>
 
